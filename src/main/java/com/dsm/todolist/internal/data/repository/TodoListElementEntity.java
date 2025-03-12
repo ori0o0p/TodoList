@@ -7,7 +7,7 @@ record TodoListElementEntity(
         boolean isSuccess
 ) {
 
-    TodoListElementEntity(Todo todo) {
+    TodoListElementEntity(final Todo todo) {
         this(todo.value(), false);
     }
 
