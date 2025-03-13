@@ -1,5 +1,6 @@
 package com.dsm.todolist.internal.core.domain.service;
 
+import com.dsm.todolist.external.web.rest.response.TodoListElementKeyResponse;
 import com.dsm.todolist.internal.core.domain.model.dto.TodoListElementDTO;
 import com.dsm.todolist.internal.core.domain.model.primitive.Key;
 import com.dsm.todolist.internal.core.domain.model.primitive.Todo;
@@ -17,8 +18,8 @@ class TodoListService implements TodoListUseCase {
     private final TodoListRepository todoListRepository;
 
     @Override
-    public void add(final Todo todo) {
-        todoListRepository.save(todo);
+    public Key add(final Todo todo) {
+        return todoListRepository.save(todo);
     }
 
     @Override
@@ -29,6 +30,12 @@ class TodoListService implements TodoListUseCase {
     @Override
     public void init() {
         todoListRepository.deleteAll();
+    }
+
+    @Override
+    public void success(final Key key) {
+        final TodoListElementDTO todo = todoListRepository.findById(key);
+        todoListRepository.save(todo.success());
     }
 
     @Override

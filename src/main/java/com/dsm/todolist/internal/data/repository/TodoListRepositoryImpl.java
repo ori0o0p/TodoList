@@ -1,5 +1,6 @@
 package com.dsm.todolist.internal.data.repository;
 
+import com.dsm.todolist.external.web.rest.response.TodoListElementKeyResponse;
 import com.dsm.todolist.internal.common.random.RandomStringUtils;
 import com.dsm.todolist.internal.core.domain.model.dto.TodoListElementDTO;
 import com.dsm.todolist.internal.core.domain.model.primitive.IsSuccess;
@@ -16,10 +17,24 @@ class TodoListRepositoryImpl implements TodoListRepository {
     private final ConcurrentHashMap<String, TodoListElementEntity> database = new ConcurrentHashMap<>();
 
     @Override
-    public void save(final Todo todo) {
+    public Key save(final Todo todo) {
+        final String key = RandomStringUtils.generate(12);
         database.put(
-                RandomStringUtils.generate(12),
+                key,
                 new TodoListElementEntity(todo)
+        );
+
+        return new Key(key);
+    }
+
+    @Override
+    public void save(final TodoListElementDTO dto) {
+        database.put(
+                dto.key().value(),
+                new TodoListElementEntity(
+                        dto.todo().value(),
+                        dto.isSuccess().value()
+                )
         );
     }
 
@@ -69,6 +84,17 @@ class TodoListRepositoryImpl implements TodoListRepository {
     @Override
     public void deleteAll() {
         database.clear();
+    }
+
+    @Override
+    public TodoListElementDTO findById(final Key key) {
+        final TodoListElementEntity element = database.get(key.value());
+
+        return new TodoListElementDTO(
+                key,
+                new Todo(element.todo()),
+                IsSuccess.getInstance(element.isSuccess())
+        );
     }
 
 }

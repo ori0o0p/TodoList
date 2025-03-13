@@ -9,4 +9,9 @@ public record TodoListElementDTO(
         Todo todo,
         IsSuccess isSuccess
 ) {
+
+    public TodoListElementDTO success() {
+        return new TodoListElementDTO(key, todo, IsSuccess.getTrueInstance());
+    }
+
 }

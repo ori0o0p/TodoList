@@ -8,11 +8,15 @@ import java.util.List;
 
 public interface TodoListRepository {
 
-    void save(Todo todo);
+    Key save(Todo todo);
+
+    void save(TodoListElementDTO dto);
 
     void delete(Key key);
 
     void deleteAll();
+
+    TodoListElementDTO findById(Key key);
 
     List<TodoListElementDTO> findAll();
 

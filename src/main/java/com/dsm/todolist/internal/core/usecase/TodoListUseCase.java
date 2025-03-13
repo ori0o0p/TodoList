@@ -8,11 +8,13 @@ import java.util.List;
 
 public interface TodoListUseCase {
 
-    void add(Todo todo);
+    Key add(Todo todo);
 
     void remove(Key key);
 
     void init();
+
+    void success(Key key);
 
     List<TodoListElementDTO> getAll();
 
