@@ -3,7 +3,6 @@ package com.dsm.todolist.external.configuration;
 import com.dsm.todolist.internal.core.domain.model.primitive.IsSuccess;
 import com.dsm.todolist.internal.core.domain.model.primitive.Key;
 import com.dsm.todolist.internal.core.domain.model.primitive.Todo;
-import graphql.language.BooleanValue;
 import graphql.language.StringValue;
 import graphql.schema.Coercing;
 import graphql.schema.CoercingParseLiteralException;
@@ -91,7 +90,6 @@ class GraphQLConfiguration {
 
         @Override
         public Boolean serialize(Object dataFetcherResult) throws CoercingSerializeException {
-            System.out.println(dataFetcherResult.getClass());
             if (dataFetcherResult instanceof IsSuccess isSuccess) {
                 return isSuccess.value();
             }
