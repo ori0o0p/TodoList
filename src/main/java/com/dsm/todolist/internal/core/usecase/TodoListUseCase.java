@@ -14,7 +14,7 @@ public interface TodoListUseCase {
 
     void init();
 
-    void success(Key key);
+    void mark(Key key);
 
     List<TodoListElementDTO> getAll();
 

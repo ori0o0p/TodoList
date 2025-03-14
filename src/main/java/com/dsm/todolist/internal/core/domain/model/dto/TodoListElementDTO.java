@@ -10,8 +10,12 @@ public record TodoListElementDTO(
         IsSuccess isSuccess
 ) {
 
-    public TodoListElementDTO success() {
-        return new TodoListElementDTO(key, todo, IsSuccess.getTrueInstance());
+    public TodoListElementDTO mark() {
+        return new TodoListElementDTO(
+                key,
+                todo,
+                IsSuccess.getInstance(!isSuccess().value())
+        );
     }
 
 }

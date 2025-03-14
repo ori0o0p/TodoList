@@ -49,8 +49,8 @@ class TodoListRestController implements TodoListDocs {
 
     @PatchMapping("/{key}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void success(@PathVariable final Key key) {
-        todoListUseCase.success(key);
+    public void markTodo(@PathVariable final Key key) {
+        todoListUseCase.mark(key);
     }
 
     @GetMapping

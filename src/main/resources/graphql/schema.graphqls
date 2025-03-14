@@ -1,0 +1,31 @@
+type Query {
+    getAllTodos: [TodoListElement!]!
+    getSuccessfulTodos: [TodoListElement!]!
+    getUnsuccessfulTodos: [TodoListElement!]!
+}
+
+type Mutation {
+    addTodo(todoInput: TodoInput!): TodoKey!
+    removeTodo(key: ID!): Boolean!
+    initTodos: Boolean!
+    markTodoSuccess(key: ID!): Boolean!
+}
+
+type TodoListElement {
+    key: ID!
+    todo: String!
+    isSuccess: IsSuccess!
+}
+
+type TodoKey {
+    key: ID!
+}
+
+input TodoInput {
+    todo: String!
+}
+
+# DP
+scalar Key
+scalar Todo
+scalar IsSuccess

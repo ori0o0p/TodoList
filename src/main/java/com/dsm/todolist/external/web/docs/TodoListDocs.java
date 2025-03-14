@@ -47,12 +47,12 @@ public interface TodoListDocs {
     })
     void init();
 
-    @Operation(summary = "Todo 완료", description = "Todo를 완료합니다.")
+    @Operation(summary = "Todo 마크", description = "Todo를 완료하거나, 완료를 취소합니다.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "204", description = "완료 성공"),
+            @ApiResponse(responseCode = "204", description = "작업 성공"),
             @ApiResponse(responseCode = "500", description = "서버 오류", content = @Content)
     })
-    void success(Key key);
+    void markTodo(Key key);
 
     @Operation(summary = "TodoList 조회", description = "등록된 TodoList를 조회합니다.")
     @ApiResponses(value = {

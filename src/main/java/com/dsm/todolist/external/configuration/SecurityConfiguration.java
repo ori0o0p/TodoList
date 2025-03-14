@@ -29,6 +29,9 @@ class SecurityConfiguration {
                                         "/swagger-resources/**",
                                         "/v3/api-docs/**"
                                 ).permitAll()
+                                .requestMatchers(
+                                        "/**"
+                                ).permitAll()
                 )
                 .formLogin(AbstractHttpConfigurer::disable)
                 .httpBasic(AbstractHttpConfigurer::disable)

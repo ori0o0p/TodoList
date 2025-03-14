@@ -21,13 +21,12 @@ dependencies {
 
     // spring boot
     implementation("org.springframework.boot:spring-boot-starter-web")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
 
     // spring security
     implementation("org.springframework.boot:spring-boot-starter-security")
 
-    // junit
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    // spring graphql
+    implementation("org.springframework.boot:spring-boot-starter-graphql")
 
     // lombok
     compileOnly("org.projectlombok:lombok")
